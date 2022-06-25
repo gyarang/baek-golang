@@ -26,10 +26,10 @@ func (l *ll) Get(cnt int) *node {
 	return currentNode
 }
 
-func (l *ll) Add(name, num int) {
+func (l *ll) Add(name, ticket int) {
 	n := &node{name: name}
 
-	if num == l.length {
+	if ticket == l.length {
 		n.next = l.head
 		l.head = n
 		l.length++
@@ -37,7 +37,7 @@ func (l *ll) Add(name, num int) {
 	}
 
 	var prev, next *node
-	prev = l.Get(l.length - 1 - num)
+	prev = l.Get(l.length - 1 - ticket)
 	next = prev.next
 
 	n.next = next
