@@ -23,13 +23,13 @@ func FiboRecur(cnt int) int {
 
 // FiboRecurTail 재귀함수 (꼬리)
 func FiboRecurTail(cnt int) int {
-	return fibonacciRecursiveTail(cnt, 0, 1)
+	return fiboRecurTail(cnt, 0, 1)
 }
 
-func fibonacciRecursiveTail(cnt, first, second int) int {
+func fiboRecurTail(cnt, first, second int) int {
 	if cnt == 0 {
 		return first
 	}
 
-	return fibonacciRecursiveTail(cnt-1, second, first+second)
+	return fiboRecurTail(cnt-1, second, first+second)
 }
