@@ -2,14 +2,16 @@ package fibonacci
 
 // FiboIter 반복문
 func FiboIter(cnt int) int {
-	var result int
-	for i, first, second := 0, 0, 1; i <= cnt; i, first, second = i+1, first+second, first {
-		if i == cnt {
-			result = first
-		}
+	if cnt == 0 {
+		return 0
 	}
 
-	return result
+	first, second := 0, 1
+	for i := 0; i < cnt; i++ {
+		first, second = second, first+second
+	}
+
+	return first
 }
 
 // FiboRecur 재귀 함수
