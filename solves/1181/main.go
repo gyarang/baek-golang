@@ -15,33 +15,25 @@ func main() {
 	var l int
 	fmt.Fscanln(reader, &l)
 
-	var input string
-	arr := make([]string, 0, l)
-	imap := make(map[string]struct{})
+	arr := make([]string, l)
 	for i := 0; i < l; i++ {
-		fmt.Fscanln(reader, &input)
-		if _, ok := imap[input]; !ok {
-			imap[input] = struct{}{}
-			arr = append(arr, input)
-		}
+		fmt.Fscanln(reader, &arr[i])
 	}
 
 	sort.Slice(arr, func(i, j int) bool {
-		if len(arr[i]) != len(arr[j]) {
-			return len(arr[i]) < len(arr[j])
+		if len(arr[i]) < len(arr[j]) {
+			return true
+		} else if len(arr[i]) == len(arr[j]) {
+			return arr[i] < arr[j]
+		} else {
+			return false
 		}
-
-		iStrArr := []uint8(arr[i])
-
-		for index, v := range iStrArr {
-			if v != arr[j][index] {
-				return v < arr[j][index]
-			}
-		}
-		return false
 	})
 
-	for _, v := range arr {
+	for i, v := range arr {
+		if i > 0 && arr[i-1] == v {
+			continue
+		}
 		fmt.Fprintln(writer, v)
 	}
 }
