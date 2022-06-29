@@ -35,3 +35,20 @@ func fiboRecurTail(cnt, first, second int) int {
 
 	return fiboRecurTail(cnt-1, second, first+second)
 }
+
+var fiboArr []int
+
+func FiboDynamic(cnt int) int {
+	fiboArr = make([]int, cnt+1)
+	return fiboDynamic(cnt)
+}
+
+func fiboDynamic(cnt int) int {
+	if cnt <= 2 {
+		return 1
+	}
+	if fiboArr[cnt] == 0 {
+		fiboArr[cnt] = fiboDynamic(cnt-1) + fiboDynamic(cnt-2)
+	}
+	return fiboArr[cnt]
+}

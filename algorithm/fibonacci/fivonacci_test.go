@@ -29,3 +29,9 @@ func BenchmarkFibonacciRecursiveTail(b *testing.B) {
 		FiboRecurTail(10)
 	}
 }
+
+func BenchmarkFiboDynamic(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		FiboDynamic(10)
+	}
+}
