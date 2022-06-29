@@ -1,14 +1,13 @@
 package main
 
 import (
-	"bufio"
+	"bytes"
 	"fmt"
-	"os"
+	"strconv"
 )
 
 func main() {
-	writer := bufio.NewWriter(os.Stdout)
-	defer writer.Flush()
+	var buf bytes.Buffer
 
 	nm := make(map[int]struct{})
 	for i := 1; i <= 10000; i++ {
@@ -22,7 +21,9 @@ func main() {
 			nm[sum] = struct{}{}
 		}
 		if _, ex := nm[i]; !ex {
-			fmt.Fprintln(writer, i)
+			buf.WriteString(strconv.Itoa(i))
+			buf.WriteRune('\n')
 		}
 	}
+	fmt.Print(buf.String())
 }
