@@ -38,6 +38,7 @@ func fiboRecurTail(cnt, first, second int) int {
 
 var fiboArr []int
 
+// FiboDynamic 동적계획법
 func FiboDynamic(cnt int) int {
 	fiboArr = make([]int, cnt+1)
 	return fiboDynamic(cnt)
