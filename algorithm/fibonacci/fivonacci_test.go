@@ -12,26 +12,42 @@ func TestFiboIter(t *testing.T) {
 	}
 }
 
-func BenchmarkFibonacciIterative(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		FiboIter(10)
+func TestFiboDynamicBTU(t *testing.T) {
+	tc := []int{0, 1, 1, 2, 3, 5, 8, 13}
+	for i, v := range tc {
+		result := FiboDynamicBTU(i)
+		if result != v {
+			t.Errorf("fibo dynanic bottom up failed at %d, expected: %d, get: %d", i, v, result)
+		}
 	}
 }
 
-func BenchmarkFibonacciRecursive(b *testing.B) {
+func BenchmarkFibonacciIterative(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		FiboRecur(10)
+		FiboIter(100)
 	}
 }
+
+//func BenchmarkFibonacciRecursive(b *testing.B) {
+//	for i := 0; i < b.N; i++ {
+//		FiboRecur(10)
+//	}
+//}
 
 func BenchmarkFibonacciRecursiveTail(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		FiboRecurTail(10)
+		FiboRecurTail(100)
 	}
 }
 
 func BenchmarkFiboDynamic(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		FiboDynamic(10)
+		FiboDynamicTD(100)
+	}
+}
+
+func BenchmarkFiboDynamicBTU(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		FiboDynamicBTU(100)
 	}
 }

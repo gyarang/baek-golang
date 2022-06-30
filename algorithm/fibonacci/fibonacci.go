@@ -38,8 +38,8 @@ func fiboRecurTail(cnt, first, second int) int {
 
 var fiboArr []int
 
-// FiboDynamic 동적계획법
-func FiboDynamic(cnt int) int {
+// FiboDynamicTD 동적계획법 탑-다운
+func FiboDynamicTD(cnt int) int {
 	fiboArr = make([]int, cnt+1)
 	return fiboDynamic(cnt)
 }
@@ -50,6 +50,19 @@ func fiboDynamic(cnt int) int {
 	}
 	if fiboArr[cnt] == 0 {
 		fiboArr[cnt] = fiboDynamic(cnt-1) + fiboDynamic(cnt-2)
+	}
+	return fiboArr[cnt]
+}
+
+// FiboDynamicBTU 동적계획법 바텀 업
+func FiboDynamicBTU(cnt int) int {
+	fiboArr := make([]int, cnt+3)
+	fiboArr[0] = 0
+	fiboArr[1] = 1
+	fiboArr[2] = 1
+
+	for i := 3; i <= cnt; i++ {
+		fiboArr[i] = fiboArr[i-1] + fiboArr[i-2]
 	}
 	return fiboArr[cnt]
 }
