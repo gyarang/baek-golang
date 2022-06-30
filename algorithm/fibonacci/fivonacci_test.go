@@ -24,30 +24,30 @@ func TestFiboDynamicBTU(t *testing.T) {
 
 func BenchmarkFibonacciIterative(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		FiboIter(100)
+		FiboIter(10)
 	}
 }
 
-//func BenchmarkFibonacciRecursive(b *testing.B) {
-//	for i := 0; i < b.N; i++ {
-//		FiboRecur(10)
-//	}
-//}
+func BenchmarkFibonacciRecursive(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		FiboRecur(10)
+	}
+}
 
 func BenchmarkFibonacciRecursiveTail(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		FiboRecurTail(100)
+		FiboRecurTail(10)
 	}
 }
 
 func BenchmarkFiboDynamic(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		FiboDynamicTD(100)
+		FiboDynamicTD(10)
 	}
 }
 
 func BenchmarkFiboDynamicBTU(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		FiboDynamicBTU(100)
+		FiboDynamicBTU(10)
 	}
 }
