@@ -57,8 +57,7 @@ func main() {
 		}
 
 		if value == 0 {
-			fmt.Println("Hing")
-			return
+			continue
 		}
 
 		if p.x+value < size {
