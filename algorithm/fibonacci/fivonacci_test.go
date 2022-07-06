@@ -2,7 +2,7 @@ package fibonacci
 
 import "testing"
 
-var fiboTC []struct{ input, result int } = []struct{ input, result int }{
+var fiboTC = []struct{ input, result int }{
 	{1, 1},
 	{2, 1},
 	{6, 8},
