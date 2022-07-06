@@ -2,22 +2,27 @@ package fibonacci
 
 import "testing"
 
+var fiboTC []struct{ input, result int } = []struct{ input, result int }{
+	{1, 1},
+	{2, 1},
+	{6, 8},
+	{50, 12586269025},
+}
+
 func TestFiboIter(t *testing.T) {
-	tc := []int{0, 1, 1, 2, 3, 5, 8, 13}
-	for i, v := range tc {
-		result := FiboIter(i)
-		if result != v {
-			t.Errorf("fibo iter failed at %d, expected: %d, get: %d", i, v, result)
+	for _, v := range fiboTC {
+		result := FiboIter(v.input)
+		if result != v.result {
+			t.Errorf("fibo iter failed at %d, expected: %d, get: %d", v.input, v.result, result)
 		}
 	}
 }
 
 func TestFiboDynamicBTU(t *testing.T) {
-	tc := []int{0, 1, 1, 2, 3, 5, 8, 13}
-	for i, v := range tc {
-		result := FiboDynamicBTU(i)
-		if result != v {
-			t.Errorf("fibo dynanic bottom up failed at %d, expected: %d, get: %d", i, v, result)
+	for _, v := range fiboTC {
+		result := FiboDynamicBTU(v.input)
+		if result != v.result {
+			t.Errorf("fibo iter failed at %d, expected: %d, get: %d", v.input, v.result, result)
 		}
 	}
 }

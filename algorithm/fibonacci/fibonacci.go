@@ -56,7 +56,11 @@ func fiboDynamic(cnt int) int {
 
 // FiboDynamicBTU 동적계획법 바텀 업
 func FiboDynamicBTU(cnt int) int {
-	fiboArr := make([]int, cnt+3)
+	if cnt <= 2 {
+		return 1
+	}
+
+	fiboArr := make([]int, cnt+1)
 	fiboArr[1] = 1
 	fiboArr[2] = 1
 
