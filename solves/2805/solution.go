@@ -12,25 +12,24 @@ func main() {
 	fmt.Fscanln(reader, &cnt, &require)
 
 	arr := make([]int, cnt)
-	max := 0
+	top := 0
 	for i := 0; i < cnt; i++ {
 		fmt.Fscan(reader, &arr[i])
-		if arr[i] > max {
-			max = arr[i]
+		if arr[i] > top {
+			top = arr[i]
 		}
 	}
 
 	start := 0
-	end := max
+	end := top
 	result := 0
 	for start <= end {
 		middle := (start + end) / 2
 		sum := 0
-		for _, v := range arr {
-			if max-v > middle {
-				continue
-			} else {
-				sum += middle - (max - v)
+		for _, height := range arr {
+			cut := middle + height - top
+			if cut > 0 {
+				sum += cut
 			}
 		}
 
@@ -43,5 +42,5 @@ func main() {
 			continue
 		}
 	}
-	fmt.Println(max - result)
+	fmt.Println(top - result)
 }
